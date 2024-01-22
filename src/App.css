@@ -1,0 +1,220 @@
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #8D6E63, #A1887F);
+  /* Utilisez des tons de marron plus clairs */
+  color: #ffffff;
+}
+
+.login-page {
+  padding: 20px;
+  color: #5D4037;
+  /* Marron plus clair pour le texte */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  white-space: nowrap;
+  /* Ajout de cette propriété */
+}
+
+label {
+  margin-bottom: 10px;
+  color: #8B4513;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 15px;
+  color: #8B4513;
+}
+
+button {
+  background-color: #8B4513;
+  color: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #3C2723;
+  /* Marron foncé */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+nav a {
+  display: block;
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+
+nav a:hover {
+  background-color: #A1887F;
+  /* Marron clair pour le survol */
+}
+
+
+.content {
+  flex: 1;
+  background-color: #ECEFF1;
+  /* Couleur de fond plus claire pour le contenu */
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.sidebar a.active {
+  background-color: #A0522D;
+  /* Marron clair */
+}
+
+.App-header {
+  background-color: #3C2723;
+  /* Marron foncé */
+  color: #ffffff;
+  padding: 20px;
+  border-bottom: 2px solid #4E342E;
+  /* Marron clair */
+}
+
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* Ajuste l'espacement entre les blocs */
+}
+
+li {
+  margin: 10px 0;
+  padding: 20px;
+  background-color: #8D6E63;
+  /* Marron foncé */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  width: calc(80% - 20px);
+  /* Calcule la largeur de chaque élément */
+  box-sizing: border-box;
+}
+
+li:hover {
+  transform: scale(1.05);
+}
+
+
+li:hover {
+  transform: scale(1.05);
+}
+
+.App-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #8D6E63;
+  /* Marron foncé */
+  color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 2px solid #A1887F;
+  /* Marron clair */
+}
+
+
+.item-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item {
+  flex: 0 0 calc(50% - 20px);
+  /* Deux éléments par ligne avec un espace de 20px entre eux */
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+
+  /* Pour les écrans plus petits, affichez un élément par ligne */
+  .item {
+    flex: 0 0 100%;
+  }
+}
+
+.item-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  /* 1ère colonne pour l'image, 2e colonne pour le texte */
+  align-items: center;
+  padding: 20px;
+  background-color: #3C2723;
+  /* Marron foncé */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  width: calc(80% - 20px);
+  /* Calcule la largeur de chaque élément */
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.text-container {
+  flex: 2;
+  padding-left: 20px;
+}
+
+.image-container img {
+  width: 100%;
+}
+
+li:hover {
+  transform: scale(1.05);
+}
+
+.App-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #3C2723;
+  /* Marron foncé */
+  color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 2px solid #4E342E;
+  /* Marron clair */
+}

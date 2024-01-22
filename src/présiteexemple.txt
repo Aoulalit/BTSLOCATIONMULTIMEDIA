@@ -1,0 +1,151 @@
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
+
+const vehicles = [
+    { id: 1, marque: 'Pc Gameur', modèle: 'lenevo', année: 2022, coûtParMois: 50 },
+    { id: 2, marque: 'rétroprojecteur', modèle: 'Hp', année: 2022, coûtParMois: 55 },
+    { id: 3, marque: 'Accessoire clavier souris', modèle: 'Razer', année: 2022, coûtParMois: 48 },
+    { id: 4, marque: 'Ecran', modèle: 'Asus', année: 2024, coûtParMois: 748 },
+];
+
+function App() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [ratings, setRatings] = useState({});
+
+    const handleLoginClick = () => {
+        setLoggedIn(true);
+    };
+
+    const handleRatingChange = (vehicleId, rating) => {
+        setRatings((prevRatings) => ({
+            ...prevRatings,
+            [vehicleId]: rating,
+        }));
+    };
+
+    return (
+        <Router>
+            <div className="App">
+                <Sidebar />
+                <div className="content">
+                    <Routes>
+                        <Route
+                            path="/login"
+                            element={
+                                <div className="login-page">
+                                    {loggedIn ? (
+                                        <p>Bienvenue, {username} !</p>
+                                    ) : (
+                                        <form>
+                                            <label>
+                                                Nom d'utilisateur:
+                                                <input
+                                                    type="text"
+                                                    value={username}
+                                                    onChange={(e) => setUsername(e.target.value)}
+                                                    placeholder="Votre nom d'utilisateur"
+                                                />
+                                            </label>
+                                            <label>
+                                                Mot de passe:
+                                                <input
+                                                    type="password"
+                                                    value={password}
+                                                    onChange={(e) => setPassword(e.target.value)}
+                                                    placeholder="Votre mot de passe"
+                                                />
+                                            </label>
+                                            <button type="button" onClick={handleLoginClick}>
+                                                Se connecter
+                                            </button>
+                                        </form>
+                                    )}
+                                </div>
+                            }
+                        />
+                    </Routes>
+                    <MainContent />
+                </div>
+            </div>
+        </Router>
+    );
+
+    function Sidebar() {
+        const [activeLink, setActiveLink] = useState('/');
+
+        return (
+            <div className="sidebar">
+                <nav>
+                    <ul>
+                        <li>
+                            <Link
+                                to="/"
+                                className={activeLink === '/' ? 'active' : ''}
+                                onClick={() => setActiveLink('/')}
+                            >
+                                Accueil
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/login"
+                                className={activeLink === '/login' ? 'active' : ''}
+                                onClick={() => setActiveLink('/login')}
+                            >
+                                Connexion
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        );
+    }
+
+    function MainContent() {
+        return (
+            <div className="main-content">
+                <header className="App-header">
+                    <h1>Système de Gestion de matériel de </h1>
+                </header>
+                <main className="App-main">
+                    <ul>
+                        {vehicles.map((vehicle) => (
+                            <li key={vehicle.id}>
+                                <strong>{`${vehicle.marque} ${vehicle.modèle}`}</strong>
+                                <p style={{ color: 'blue' }}> Année: {vehicle.année}</p >
+                                <p style={{ color: 'blue' }}>Coût par jour: ${vehicle.coûtParJour}</p>
+                                <p style={{ color: 'blue' }}>Avis: <StarRating value={ratings[vehicle.id] || 0} onStarClick={(rating) => handleRatingChange(vehicle.id, rating)} /></p>
+                            </li>
+                        ))}
+                    </ul>
+                </main>
+                <footer className="App-footer">
+                    <p>&copy; 2023 Système de Gestion de Location de matériel - Adam Oulalit</p>
+                </footer>
+            </div>
+        );
+    }
+
+    function StarRating({ value, onStarClick }) {
+        const stars = Array.from({ length: 5 }, (_, index) => (
+            <span
+                key={index}
+                className={`star ${value >= index + 1 ? 'filled' : ''}`}
+                onClick={() => onStarClick(index + 1)}
+            >
+                ★
+            </span>
+        ));
+
+        return <div className="star-rating">{stars}</div>;
+    }
+}
+
+export default App;
+
+
+
+
